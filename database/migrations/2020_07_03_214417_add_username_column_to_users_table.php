@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFailedJobsTable extends Migration
+class AddUsernameColumnToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateFailedJobsTable extends Migration
      */
     public function up()
     {
-        Schema::create('failed_jobs', function (Blueprint $table) {
-            $table->id();
-            $table->text('connection');
-            $table->text('queue');
-            $table->longText('payload');
-            $table->longText('exception');
-            $table->timestamp('failed_at')->useCurrent();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('username')->after('name')->nullable();
         });
     }
 
@@ -30,6 +25,8 @@ class CreateFailedJobsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('username');
+        });
     }
 }

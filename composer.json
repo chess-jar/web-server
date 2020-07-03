@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
         "propaganistas/laravel-phone": "^4.2",
+        "spatie/laravel-honeypot": "^2.2",
         "spatie/laravel-permission": "^3.13"
     },
     "require-dev": {

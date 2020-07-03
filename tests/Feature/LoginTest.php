@@ -26,7 +26,7 @@ class LoginTest extends TestCase
      *
      * @return void Returns nothing.
      */
-    public function testLoginView()
+    public function testLoginViewWhileAuthenticated()
     {
         $user = factory(User::class)->make();
         $response = $this->actingAs($user)->get('/login');

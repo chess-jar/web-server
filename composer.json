@@ -1,11 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "chess-jar/web-server",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": [
-        "framework",
-        "laravel"
-    ],
+    "description": "This repository is the main web server that runs ChessJar.",
+    "keywords": [],
     "license": "MIT",
     "require": {
         "php": "^7.2.5",

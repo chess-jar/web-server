@@ -10,6 +10,8 @@ use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * Test to ensure the user can view the login form.
      *

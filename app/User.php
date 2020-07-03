@@ -5,12 +5,13 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laratrust\Traits\LaratrustUserTrait;
+use Lab404\Impersonate\Models\Impersonate;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, LaratrustUserTrait, Notifiable;
+    use HasApiTokens, HasRoles, Impersonate, Notifiable;
 
     /** @var array $fillable The attributes that are mass assignable. */
     protected $fillable = [
@@ -35,6 +36,26 @@ class User extends Authenticatable
     public function phone()
     {
         return $this->hasOne('App\Phone');
+    }
+
+    /**
+     * Can this user impersonate another user.
+     *
+     * @return bool Returns true if this user can impersonate and false if not.
+     */
+    public function canImpersonate()
+    {
+        return $this->can('impersonate');
+    }
+
+    /**
+     * Can this user be impersonated by another user.
+     *
+     * @return bool Returns true if this user can be impersonated and false if not.
+     */
+    public function canBeImpersonated()
+    {
+        return $this->can('impersonated');
     }
 
     /**

@@ -36,4 +36,21 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Phone');
     }
+
+    /**
+     * Log the users ip address.
+     *
+     * @param bool $registering Is the user registering.
+     *
+     * @return void Returns nothing.
+     */
+    protected function logIp($registering = false)
+    {
+        $currentIp = request()->ip();
+        if ($registering) {
+            $user->register_ip_address = $currentIp;
+        }
+        $user->last_login_ip_address = $currentIp;
+        $user->save();
+    }
 }

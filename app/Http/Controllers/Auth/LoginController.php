@@ -44,8 +44,7 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        $user->last_login_ip_address = $request->ip();
-        $user->save();
+        $user->logIp();
     }
 
     /**

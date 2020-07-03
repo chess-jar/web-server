@@ -67,22 +67,8 @@ class RegisterController extends Controller
             'email'    => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        $this->logIpAddress($user);
+        $user->logIp(true);
         $user->attachRole('user');
         return $user;
-    }
-
-    /**
-     * Log the users ip address upon registration.
-     *
-     * @param \App\User $user The authenticated user.
-     *
-     * @return void Returns nothing.
-     */
-    protected function logIpAddress(User $user)
-    {
-        $user->register_ip_address = request()->ip();
-        $user->last_login_ip_address = request()->ip();
-        $user->save();
     }
 }

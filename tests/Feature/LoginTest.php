@@ -48,7 +48,7 @@ class LoginTest extends TestCase
             'password' => Hash::make($password = 'i-love-laravel'),
         ]);
         $response = $this->post('/login', [
-            'email' => $user->username,
+            'username' => $user->username,
             'password' => $password,
         ]);
         $response->assertRedirect('/home');

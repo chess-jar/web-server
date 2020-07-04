@@ -6,22 +6,13 @@ use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
     use RefreshDatabase;
-
-    /**
-     * Formats the too many login attempts message based the passed seconds.
-     *
-     * @return string Returns the too many login attempts message.
-     */
-    protected function getTooManyLoginAttemptsMessage()
-    {
-        return sprintf('/^%s$/', str_replace('\:seconds', '\d+', preg_quote(__('auth.throttle'), '/')));
-    }
 
     /**
      * Test to ensure the user can view the login form.
@@ -148,42 +139,8 @@ class LoginTest extends TestCase
      */
     public function testUserCannotLogoutWhenNotAuthenticated()
     {
-        $response = $this->post($this->logoutRoute());
+        $response = $this->post('/logout');
         $response->assertRedirect('/');
-        $this->assertGuest();
-    }
-
-    /**
-     * Test to ensure the brute force system is working.
-     *
-     * @return void Returns nothing.
-     */
-    public function testUserCannotMakeMoreThanFiveAttemptsInOneMinute()
-    {
-        $user = factory(User::class)->create([
-            'password' => Hash::make($password = 'i-love-laravel'),
-        ]);
-        foreach (range(0, 5) as $_) {
-            $response = $this->from('/login')->post('/login', [
-                'username' => $user->username,
-                'password' => 'invalid-password',
-            ]);
-        }
-        $response->assertRedirect('/login');
-        $response->assertSessionHasErrors('username');
-        $this->assertRegExp(
-            $this->getTooManyLoginAttemptsMessage(),
-            collect(
-                $response
-                ->baseResponse
-                ->getSession()
-                ->get('errors')
-                ->getBag('default')
-                ->get('email')
-            )->first()
-        );
-        $this->assertTrue(session()->hasOldInput('username'));
-        $this->assertFalse(session()->hasOldInput('password'));
         $this->assertGuest();
     }
 }

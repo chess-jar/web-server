@@ -13,12 +13,16 @@ return [
     |
     */
 
-    'click_me' => 'Click me',
-    'error'    => 'Error',
-    'failed'   => 'These credentials do not match our records.',
-    'login'    => 'Login',
-    'logout'   => 'Logout',
-    'remember' => 'Remember me',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'click_me'   => 'Click me',
+    'email'      => 'Email',
+    'email_safe' => 'We\'ll never share your email with anyone else.',
+    'error'      => 'Error',
+    'failed'     => 'These credentials do not match our records.',
+    'login'      => 'Login',
+    'logout'     => 'Logout',
+    'register'   => 'Register',
+    'remember'   => 'Remember me',
+    'throttle'   => 'Too many login attempts. Please try again in :seconds seconds.',
+    'username'   => 'Username',
 
 ];

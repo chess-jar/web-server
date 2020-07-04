@@ -69,9 +69,9 @@ class User extends Authenticatable
     {
         $currentIp = request()->ip();
         if ($registering) {
-            $user->register_ip_address = $currentIp;
+            $this->register_ip_address = $currentIp;
         }
-        $user->last_login_ip_address = $currentIp;
-        $user->save();
+        $this->last_login_ip_address = $currentIp;
+        $this->save();
     }
 }

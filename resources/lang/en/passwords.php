@@ -15,6 +15,7 @@ return [
 
     'forgotten_password' => 'Have you forgotten your password?',
     'password'           => 'Password',
+    'password_confirm'   => 'Confirm Password',
     'reset'              => 'Your password has been reset!',
     'sent'               => 'We have emailed your password reset link!',
     'throttled'          => 'Please wait before retrying.',

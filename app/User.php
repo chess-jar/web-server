@@ -65,7 +65,7 @@ class User extends Authenticatable
      *
      * @return void Returns nothing.
      */
-    protected function logIp($registering = false)
+    public function logIp($registering = false)
     {
         $currentIp = request()->ip();
         if ($registering) {

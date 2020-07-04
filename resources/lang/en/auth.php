@@ -13,7 +13,12 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
+    'click_me' => 'Click me',
+    'error'    => 'Error',
+    'failed'   => 'These credentials do not match our records.',
+    'login'    => 'Login',
+    'logout'   => 'Logout',
+    'remember' => 'Remember me',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];

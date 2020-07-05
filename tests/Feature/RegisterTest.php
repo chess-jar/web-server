@@ -33,7 +33,7 @@ class RegisterTest extends TestCase
     public function testUserCannotViewARegistrationFormWhenAuthenticated()
     {
         $user = factory(User::class)->make();
-        $response = $this->actingAs($user)->get('/register'));
+        $response = $this->actingAs($user)->get('/register');
         $response->assertRedirect('/home');
     }
 

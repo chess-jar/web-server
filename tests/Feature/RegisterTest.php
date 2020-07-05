@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class RegisterTest extends TestCase
@@ -97,7 +98,6 @@ class RegisterTest extends TestCase
             'password'              => 'i-love-laravel',
             'password_confirmation' => 'i-love-laravel',
         ]);
-
         $users = User::all();
         $this->assertCount(0, $users);
         $response->assertRedirect('/register');

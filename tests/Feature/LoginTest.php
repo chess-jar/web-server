@@ -144,16 +144,3 @@ class LoginTest extends TestCase
         $this->assertGuest();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

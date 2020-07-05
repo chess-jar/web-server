@@ -8,6 +8,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 class RegisterTest extends TestCase
@@ -46,6 +47,7 @@ class RegisterTest extends TestCase
     public function testUserCanRegister()
     {
         Event::fake();
+        Role::create(['name' => 'user']);
         $response = $this->post('/register', [
             'username'              => 'volkron',
             'email'                 => 'volkron@example.com',
@@ -70,6 +72,7 @@ class RegisterTest extends TestCase
      */
     public function testUserCannotRegisterWithoutName()
     {
+        Role::create(['name' => 'user']);
         $response = $this->from('/register')->post('/register', [
             'username'              => '',
             'email'                 => 'john@example.com',
@@ -92,6 +95,7 @@ class RegisterTest extends TestCase
      */
     public function testUserCannotRegisterWithoutEmail()
     {
+        Role::create(['name' => 'user']);
         $response = $this->from('/register')->post('/register', [
             'username'              => 'volkron',
             'email'                 => '',
@@ -114,6 +118,7 @@ class RegisterTest extends TestCase
      */
     public function testUserCannotRegisterWithInvalidEmail()
     {
+        Role::create(['name' => 'user']);
         $response = $this->from('/register')->post('/register', [
             'username'              => 'volkron',
             'email'                 => 'invalid-email',
@@ -137,6 +142,7 @@ class RegisterTest extends TestCase
      */
     public function testUserCannotRegisterWithoutPassword()
     {
+        Role::create(['name' => 'user']);
         $response = $this->from('/register')->post('/register', [
             'username'              => 'volkron',
             'email'                 => 'john@example.com',
@@ -160,6 +166,7 @@ class RegisterTest extends TestCase
      */
     public function testUserCannotRegisterWithoutPasswordConfirmation()
     {
+        Role::create(['name' => 'user']);
         $response = $this->from('/register')->post('/register', [
             'username'              => 'volkron',
             'email'                 => 'john@example.com',
@@ -183,6 +190,7 @@ class RegisterTest extends TestCase
      */
     public function testUserCannotRegisterWithPasswordsNotMatching()
     {
+        Role::create(['name' => 'user']);
         $response = $this->from('/register')->post('/register', [
             'username'              => 'volkron',
             'email'                 => 'john@example.com',

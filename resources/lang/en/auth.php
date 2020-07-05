@@ -13,16 +13,17 @@ return [
     |
     */
 
-    'click_me'   => 'Click me',
-    'email'      => 'Email',
-    'email_safe' => 'We\'ll never share your email with anyone else.',
-    'error'      => 'Error',
-    'failed'     => 'These credentials do not match our records.',
-    'login'      => 'Login',
-    'logout'     => 'Logout',
-    'register'   => 'Register',
-    'remember'   => 'Remember me',
-    'throttle'   => 'Too many login attempts. Please try again in :seconds seconds.',
-    'username'   => 'Username',
+    'click_me'         => 'Click me',
+    'email'            => 'Email',
+    'email_reset_text' => 'Be sure to check your email within an hour because each token expires an hour after it has been created.',
+    'email_safe'       => 'We\'ll never share your email with anyone else.',
+    'error'            => 'Error',
+    'failed'           => 'These credentials do not match our records.',
+    'login'            => 'Login',
+    'logout'           => 'Logout',
+    'register'         => 'Register',
+    'remember'         => 'Remember me',
+    'throttle'         => 'Too many login attempts. Please try again in :seconds seconds.',
+    'username'         => 'Username',
 
 ];

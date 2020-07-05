@@ -7,10 +7,12 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      *
-     * @return void
+     * @return void Returns nothing.
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $this->call([
+            RolesTableSeeder::class,
+        ]);
     }
 }

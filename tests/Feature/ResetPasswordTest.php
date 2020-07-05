@@ -15,6 +15,8 @@ use Tests\TestCase;
 
 class ResetPasswordTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * Get a valid token from the password broker.
      *
